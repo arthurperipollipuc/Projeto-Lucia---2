@@ -1,0 +1,39 @@
+Organização do Projeto
+
+ELEMENTOS PRINCIPAIS
+- pedidos
+- entregadores
+- operações por dia
+
+O sistema deverá ser funcional tendo um fluxo contínuo de operação e execução com um menu
+principal e as funcionalidades mínimas obrigatórias serão:
+
+FUNÇÕES PRINCIPAIS
+- Menu Principal
+- Cadastro de Pedidos
+- Cadastro de Entregadores
+- Atualização dos Pedidos
+- Consulta de Informações
+- Relatórios
+- Finalização do Sistema
+
+
+OPERAÇÕES INTERNAS
+- cadastro de informações
+- organização de registros
+- processamento de decisões
+- execução repetitiva de tarefas
+- armazenamento estruturado
+- consultas
+- geração de relatórios textuais
+
+
+DECIDIR
+- pedidos podem ser priorizados ou respeita-se a ordem de chegada
+- entregadores não podem fazer múltiplas rotas simultâneas ou depende da carga
+- pedidos podem mudar de estado
+- operadores podem cadastrar informações incorretas
+- determinados registros podem ficar “inativos”
+- alguns relatórios precisam ignorar dados inconsistentes
+- certas operações só fazem sentido em horários específicos
+
