@@ -1,8 +1,3 @@
-import random
-import os
-
-pedidos=[]
-entregadores=[]
 
 def cadastro_pedidos():
 
@@ -46,22 +41,21 @@ def cadastro_pedidos():
             status== None
     
     id_pedido = input("Digite o Id do pedido: ")
-    if len(id_pedido) != 5:
-        return False
-    elif not id_pedido[0].isalpha():
-        return False
-    elif not id_pedido[1:].isdigit():
-        return False
-    else:
-        return True
+    while len(id_pedido) != 5 or not id_pedido[0].isalpha() or not id_pedido[1:].isdigit():
+        print("Id do pedido deve conter 5 caracteres, sendo a primeira letra e as demais números.")
+        id_pedido = input("Digite o Id do pedido: ")
+
     
     id_entregador= int(input('Digite o id do entregador: '))
+
+    lista = [nome_cliente, endereco, prioridade, descricao, status, id_pedido, id_entregador]
+    return lista
     
 
-    
-
-    
-    
-
-print(cadastro_pedidos())
-    
+def consultar_pedidos(lista_pedidos):
+    id_pedido = input("Digite o Id do pedido: ")
+    for pedido in lista_pedidos:
+        if pedido[5] == id_pedido:
+            return pedido
+    print("Pedido não encontrado.")
+    return None
