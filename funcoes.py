@@ -1,4 +1,11 @@
 
+import os
+
+pdd_lista =[]
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def cadastro_pedidos():
 
     nome_cliente = input("Digite seu Nome: ")
@@ -123,3 +130,76 @@ def consultar_pedidos(lista_pedidos):
             return pedido
     print("Pedido não encontrado.")
     return None
+
+
+def alt_status(lista_pedidos):
+    limpar_tela()
+    id_pedido=input("Insira o id do pedido: ")
+    for i in range(len(lista_pedidos)):
+        if id_pedido == lista_pedidos[i][5]:
+            print(lista_pedidos[i][4])
+            status=None
+            while status == None:
+                print(f"\n====STATUS====")
+                print("1- Pendente")
+                print("2- Em Rota")
+                print("3- Entregue")
+                s = int(input("Selecione o novo status: "))
+                if(s==1):
+                    status = 'Pendente'
+                elif(s==2):
+                    status = 'Em rota'
+                elif (s==3):
+                    status= 'Entregue'
+                else:
+                    print("Selecione uma das opções")
+                    status== None
+            lista_pedidos[i][4] = status
+
+
+def cancel_pedido(lista_pedidos):
+    limpar_tela()
+    id_pedido=input("Insira o id do pedido: ")
+    for i in range(len(lista_pedidos)):
+        if id_pedido == lista_pedidos[i][5]:
+            
+            opcao=None
+            while opcao == None:
+                o=input("Deseja cancelar o seguinte pedido? - S/N")
+                print(lista_pedidos[i])
+                if(o=="S" or o=="s"):
+                    lista_pedidos[i][4] = "Cancelado"
+                    return
+                elif(o=="N" or o=="n"):
+                    return
+                else:
+                    opcao=None
+
+def ass_entregador(lista_pedidos, lista_entregadores):
+    limpar_tela()
+    id_pedido=input("Insira o id do pedido: ")
+    for i in range(len(lista_pedidos)):
+        if id_pedido == lista_pedidos[i][5]:
+
+            id_entregador = lista_pedidos[i][6]
+            for i in range(len(lista_entregadores)):
+                if id_entregador == lista_entregadores[i][2]:
+                    print(f"Entregador Atual: {lista_entregadores[i][0]}")
+                    print(f"ID: "+{lista_entregadores[i][2]})
+
+                    n_id=int(input("Insira o ID do Novo Entregador: "))
+                    lista_pedidos[i][6] = n_id
+
+                else:
+                    print("Entregador Não Encontrado")
+                    return
+
+
+
+
+
+
+            
+    
+
+
