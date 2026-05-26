@@ -190,12 +190,13 @@ def remover_ent(lista_pedidos, lista_entregadores):
                     id_ent = lista_entregadores[j][2]
                     
                     opcao=None
-                    while opcao==None:
-                        print(f"\nVocê deseja remover {entregador}(id:{id_ent}) do Pedido")
-
-                    n_id=int(input("Insira o ID do Novo Entregador: "))
-                    lista_pedidos[i][6] = n_id
-                    return
+                    while opcao==None or opcao != 'N' or opcao != 'n'  or opcao != 'S' or opcao != 's':
+                        opcao = (f"\nVocê deseja remover {entregador}(id:{id_ent}) do Pedido {id_pedido}? - S/N")
+                    if opcao == 'N' or opcao == 'n':
+                        lista_pedidos[i][6] = "Nenhum Entregador"
+                        return
+                    else:
+                        return
 
                 else:
                     print("Entregador Não Encontrado")
