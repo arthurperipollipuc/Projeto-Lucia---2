@@ -175,20 +175,50 @@ def cancel_pedido(lista_pedidos):
                 else:
                     opcao=None
 
+def remover_ent(lista_pedidos, lista_entregadores):
+    limpar_tela()
+    id_pedido=input("Insira o id do pedido: ")
+    for i in range(len(lista_pedidos)):
+        if id_pedido == lista_pedidos[i][5]:
+
+
+
+            id_entregador = lista_pedidos[i][6]
+            for j in range(len(lista_entregadores)):
+                if id_entregador == lista_entregadores[j][2]:
+                    entregador = lista_entregadores[j][0]
+                    id_ent = lista_entregadores[j][2]
+                    
+                    opcao=None
+                    while opcao==None:
+                        print(f"\nVocê deseja remover {entregador}(id:{id_ent}) do Pedido")
+
+                    n_id=int(input("Insira o ID do Novo Entregador: "))
+                    lista_pedidos[i][6] = n_id
+                    return
+
+                else:
+                    print("Entregador Não Encontrado")
+                    return
+
+
 def ass_entregador(lista_pedidos, lista_entregadores):
     limpar_tela()
     id_pedido=input("Insira o id do pedido: ")
     for i in range(len(lista_pedidos)):
         if id_pedido == lista_pedidos[i][5]:
 
+
+
             id_entregador = lista_pedidos[i][6]
-            for i in range(len(lista_entregadores)):
-                if id_entregador == lista_entregadores[i][2]:
-                    print(f"Entregador Atual: {lista_entregadores[i][0]}")
-                    print(f"ID: "+{lista_entregadores[i][2]})
+            for j in range(len(lista_entregadores)):
+                if id_entregador == lista_entregadores[j][2]:
+                    print(f"Entregador Atual: {lista_entregadores[j][0]}")
+                    print(f"ID: {lista_entregadores[j][2]}")
 
                     n_id=int(input("Insira o ID do Novo Entregador: "))
                     lista_pedidos[i][6] = n_id
+                    return
 
                 else:
                     print("Entregador Não Encontrado")
