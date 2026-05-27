@@ -90,6 +90,7 @@ def atualizar_pedido():
             funcoes.ass_entregador(pedidos,entregadores)
         elif (o==4):
             funcoes.remover_ent(pedidos,entregadores)
+            principal()
         elif (o==5):
             principal()
         else:

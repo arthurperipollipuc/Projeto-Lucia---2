@@ -181,26 +181,30 @@ def remover_ent(lista_pedidos, lista_entregadores):
     for i in range(len(lista_pedidos)):
         if id_pedido == lista_pedidos[i][5]:
 
-
-
             id_entregador = lista_pedidos[i][6]
             for j in range(len(lista_entregadores)):
                 if id_entregador == lista_entregadores[j][2]:
                     entregador = lista_entregadores[j][0]
-                    id_ent = lista_entregadores[j][2]
                     
                     opcao=None
-                    while opcao==None or opcao != 'N' or opcao != 'n'  or opcao != 'S' or opcao != 's':
-                        opcao = (f"\nVocê deseja remover {entregador}(id:{id_ent}) do Pedido {id_pedido}? - S/N")
-                    if opcao == 'N' or opcao == 'n':
-                        lista_pedidos[i][6] = "Nenhum Entregador"
-                        return
-                    else:
-                        return
+                    while opcao==None:
+                        o = input(f"\nVocê deseja remover {entregador}(id:{id_entregador}) do Pedido {id_pedido}? - S/N")
+                        if o == 'S' or o == 's':
+                            lista_pedidos[i][6] = "Nenhum Entregador"
+                            print("Entregador removido com sucesso!")
+                            return
+                        elif o == 'N' or o == 'n':
+                            print("Operação cancelada.")
+                            return
+                        else:
+                            opcao=None
 
                 else:
                     print("Entregador Não Encontrado")
                     return
+        else:
+            print("Pedido Não Encontrado")
+            return
 
 
 def ass_entregador(lista_pedidos, lista_entregadores):
@@ -224,13 +228,3 @@ def ass_entregador(lista_pedidos, lista_entregadores):
                 else:
                     print("Entregador Não Encontrado")
                     return
-
-
-
-
-
-
-            
-    
-
-
