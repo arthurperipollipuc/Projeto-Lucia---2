@@ -43,7 +43,9 @@ def gerenciamento_ent():
 
 
 def cadastro_ent():
-    entregadores.append(funcoes.cadastro_entregador())
+    lista = funcoes.cadastro_entregador(entregadores)
+    if(lista!=None):
+        entregadores.append(lista)
     principal()
 
 def listar_ent():
@@ -99,7 +101,10 @@ def atualizar_pedido():
 
 
 def cadastro_pedidos():
-    pedidos.append(funcoes.cadastro_pedidos())
+    lista = funcoes.cadastro_pedidos(pedidos, entregadores)
+
+    if(lista!=None):
+        pedidos.append(lista)
     principal()
 
 def listar_pedidos():

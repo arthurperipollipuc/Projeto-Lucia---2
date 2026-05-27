@@ -1,4 +1,5 @@
 
+import verificacoes
 import os
 
 pdd_lista =[]
@@ -6,7 +7,7 @@ pdd_lista =[]
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def cadastro_pedidos():
+def cadastro_pedidos(lista_pedidos, lista_entregadores):
 
     nome_cliente = input("Digite seu Nome: ")
     endereco = input("Digite seu Endereço: ")
@@ -48,21 +49,24 @@ def cadastro_pedidos():
             status== None
     
     id_pedido = input("Digite o Id do pedido: ")
-    while len(id_pedido) != 5 or not id_pedido[0].isalpha() or not id_pedido[1:].isdigit():
-        print("Id do pedido deve conter 5 caracteres, sendo a primeira letra e as demais números.")
+    while not verificacoes.validar_id_pedido(lista_pedidos, id_pedido):
+        print(f"\nId do pedido não pode ser repetido - Deve conter 5 Caracteres, sendo a primeira letra e as demais números.")
         id_pedido = input("Digite o Id do pedido: ")
 
     
     id_entregador = input("Digite o Id do entregador: ")
-    while len(id_entregador) != 4 or not id_entregador[:].isdigit():
-        print("Id do pedido deve conter 4 dígitos")
-        id_entregador = input("Digite o Id do pedido: ")
+    while not verificacoes.verificar_ent(lista_entregadores, id_entregador):
+        print(f"\nId do entregador não encontrado. Digite um Id válido - ou Digite 0 para cancelar")
+        id_entregador = input("Digite o Id do entregador: ")
+        if id_entregador == "0":
+            return
+        
 
 
     lista = [nome_cliente, endereco, prioridade, descricao, status, id_pedido, id_entregador]
     return lista
 
-def cadastro_entregador():
+def cadastro_entregador(lista_entregadores):
 
     nome_entregador = input("Digite o Nome do Entregador: ")
 
@@ -84,10 +88,10 @@ def cadastro_entregador():
             veiculo=None
     
     id_entregador = input("Digite o Id do entregador: ")
-    while len(id_entregador) != 4 or not id_entregador[:].isdigit():
-        print("Id do pedido deve conter 4 dígitos")
-        id_entregador = input("Digite o Id do pedido: ")
-
+    while not verificacoes.validar_id_ent(lista_entregadores, id_entregador):
+        print("Id do entregador deve conter 4 dígitos e não pode ser repetido.")
+        id_entregador = input("Digite o Id do entregador: ")
+        
     id_pedido = input("Digite o Id do pedido: ")
     while len(id_pedido) != 5 or not id_pedido[0].isalpha() or not id_pedido[1:].isdigit():
         print("Id do pedido deve conter 5 caracteres, sendo a primeira letra e as demais números.")
