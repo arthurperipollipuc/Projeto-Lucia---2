@@ -169,8 +169,7 @@ def cancel_pedido(lista_pedidos):
             
             opcao=None
             while opcao == None:
-                o=input("Deseja cancelar o seguinte pedido? - S/N")
-                print(lista_pedidos[i])
+                o=input(f"Deseja cancelar o seguinte pedido?\n {lista_pedidos[i]} - S/N")
                 if(o=="S" or o=="s"):
                     lista_pedidos[i][4] = "Cancelado"
                     return
